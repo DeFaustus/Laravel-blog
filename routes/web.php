@@ -22,6 +22,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/postsaya', [DashboardController::class, 'postsaya']);
     Route::post('/store', [DashboardController::class, 'store']);
     Route::get('/edit/{post:id}', [DashboardController::class, 'edit']);
+    Route::post('/storeupdate', [DashboardController::class, 'storeUpdate']);
     Route::get('/logout', [DashboardController::class, 'logout']);
     Route::delete('/hapus', [DashboardController::class, 'hapus']);
 });

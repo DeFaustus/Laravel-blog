@@ -71,6 +71,10 @@ class DashboardController extends Controller
             'selectKategori'    => $kategori
         ]);
     }
+    public function storeUpdate(Request $request)
+    {
+        return $request->all();
+    }
 
     public function hapus(Request $request)
     {
