@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/semuapost/', [PostController::class, 'semuaPost']);
 Route::get('/lihatpost/{post:slug}', [PostController::class, 'lihatPost']);
-Route::group(['prefix' => 'auth', 'middleware' => 'guest'], function () {
-    Route::get('/login', [LoginController::class, 'index'])->name('login');
-    Route::get('/register', [LoginController::class, 'register']);
-    Route::post('/store', [LoginController::class, 'store']);
-    Route::post('/loginAction', [LoginController::class, 'login']);
-});
+// Route::group(['prefix' => 'auth', 'middleware' => 'guest'], function () {
+//     Route::get('/login', [LoginController::class, 'index'])->name('login');
+//     Route::get('/register', [LoginController::class, 'register']);
+//     Route::post('/store', [LoginController::class, 'store']);
+//     Route::post('/loginAction', [LoginController::class, 'login']);
+// });
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/home', [DashboardController::class, 'index']);
     Route::get('/tambahpost', [DashboardController::class, 'tambahpost']);

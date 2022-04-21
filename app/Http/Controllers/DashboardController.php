@@ -79,6 +79,9 @@ class DashboardController extends Controller
     public function hapus(Request $request)
     {
         $post = Post::find($request->input('id'));
+        if ($post->user_id != Auth::user()->id) {
+            abort(404);
+        }
         if (Storage::exists('public/gambar/' . $post->gambar)) {
             Storage::delete('public/gambar/' . $post->gambar);
         }

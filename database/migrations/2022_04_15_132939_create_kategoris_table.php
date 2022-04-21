@@ -28,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::enableForeignKeyConstraints();
         Schema::dropIfExists('kategoris');
-        Schema::disableForeignKeyConstraints();
     }
 };

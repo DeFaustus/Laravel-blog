@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('kategori_post', function (Blueprint $table) {
-            $table->foreignId('kategori_id')->references('id')->on('kategoris')->onDelete('cascade');
-            $table->foreignId('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreignId('kategori_id')->constrained('kategoris')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('post_id')->constrained('posts')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

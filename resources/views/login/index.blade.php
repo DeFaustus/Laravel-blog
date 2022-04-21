@@ -7,6 +7,10 @@
             <div class="alert alert-success">
                 {{ session('status') }}
             </div>
+        @elseif(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
         @endif
         {{-- <section class="vh-100"> --}}
         <div class="container-fluid h-custom">
@@ -16,7 +20,7 @@
                         class="img-fluid" alt="Sample image">
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                    <form action="/auth/loginAction" method="POST">
+                    <form action="/login" method="POST">
                         @csrf
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form3Example3">Email address :</label>
@@ -45,7 +49,7 @@
                         <div class="text-center text-lg-start mt-4 pt-2 mb-4">
                             <button type="submit" class="btn btn-primary btn-lg"
                                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-                            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/auth/register"
+                            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="register"
                                     class="link-danger">Register</a></p>
                         </div>
 

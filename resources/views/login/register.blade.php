@@ -10,7 +10,7 @@
                         class="img-fluid" alt="Sample image">
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                    <form action="/auth/store" method="POST">
+                    <form action="/register" method="POST">
                         @csrf
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form3Example3">Nama :</label>
