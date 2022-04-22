@@ -13,6 +13,7 @@
                                 <input type="text" class="form-control @error('judul') is-invalid @enderror" name="judul"
                                     id="exampleFormControlInput1" placeholder="masukkan judul"
                                     value="{{ old('judul', $post->judul) }}">
+                                <input type="hidden" name="id" value="{{ $post->id }}">
                                 @error('judul')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -33,20 +34,23 @@
                             </div>
                             <div class="mb-3">
                                 <label for="">Isi : </label>
-                                <input id="x" type="hidden" name="isi" value="{{ old('isi') }}">
+                                <input id="x" type="hidden" name="isi" value="{{ old('isi', $post->isi) }}">
                                 <trix-editor input="x"></trix-editor>
                                 @error('isi')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="mb-3">
+                                <img src="{{ url('/storage/gambar', $post->gambar) }} " width="100" height="100" alt=""
+                                    srcset="">
+                                <br>
                                 <label for="exampleFormControlInput1" class="form-label">Gambar : </label>
                                 <input type="file" class="form-control" name="gambar" id="">
                                 @error('gambar')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-success">Tambah Post</button>
+                            <button type="submit" class="btn btn-success">Edit Post</button>
                         </form>
                     </div>
                 </div>

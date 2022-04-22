@@ -24,7 +24,7 @@
                                   Dashboard
                               </a>
                           @else
-                              <a href="/auth/login" data-toggle="tooltip" data-placement="bottom" title="Login">
+                              <a href="/login" data-toggle="tooltip" data-placement="bottom" title="Login">
                                   Login
                               </a>
                           @endif

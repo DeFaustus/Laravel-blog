@@ -73,7 +73,49 @@ class DashboardController extends Controller
     }
     public function storeUpdate(Request $request)
     {
-        return $request->all();
+        $post = Post::find($request->id);
+        if (Auth::user()->id != $post->user_id) {
+            abort(404);
+        }
+        $validate = $request->validate([
+            'judul'         => 'required',
+            'kategori'      => 'required',
+            'isi'           => 'required'
+        ]);
+        $validate['slug'] = 'unique:posts,slug';
+        $slug = Str::slug($request->input('judul'), '-');
+        $validate['slug'] = $slug;
+        $excerpt = Str::limit(strip_tags($request->input('isi')), 100);
+        $kat = [];
+        foreach ($request->input('kategori') as $item) {
+            array_push($kat, $item);
+        }
+        $post->kategoris()->sync($kat);
+        if ($request->file('gambar')) {
+            $validate['gambar'] = "mimes:jpg,png,jpeg";
+            if (Storage::exists('public/gambar/' . $post->gambar)) {
+                Storage::delete('public/gambar/' . $post->gambar);
+            }
+            $fileName = $request->file('gambar')->hashName();
+            Storage::putFileAs('public/gambar', $request->file('gambar'), $fileName);
+            $post = Post::where('id', $request->id)->update([
+                'judul'     => $request->judul,
+                'isi'       => $request->isi,
+                'slug'      => $slug,
+                'excerpt'   => $excerpt,
+                'isi'       => $request->isi,
+                'gambar'    => $fileName
+            ]);
+        }
+        $postHasil = Post::where('id', $request->id)->update([
+            'judul'     => $request->judul,
+            'isi'       => $request->isi,
+            'slug'      => $slug,
+            'excerpt'   => $excerpt,
+            'isi'       => $request->isi,
+        ]);
+
+        return redirect('/dashboard/postsaya')->with('status', "Berhasil Update Blog");
     }
 
     public function hapus(Request $request)

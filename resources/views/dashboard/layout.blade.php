@@ -21,15 +21,23 @@
         <div class="border-end bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading border-bottom bg-light">{{ Auth::user()->name }} </div>
             <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action list-group-item-light p-3 {{ Request::segment(2) == 'home' ? 'active' : '' }}"
-                    href="/dashboard/home">Dashboard</a>
-
-                <a class="list-group-item list-group-item-action list-group-item-light p-3 {{ Request::segment(2) == 'postsaya' ? 'active' : '' }}"
-                    href="/dashboard/postsaya">Post Saya</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3 {{ Request::segment(2) == 'tambahpost' ? 'active' : '' }}"
-                    href="/dashboard/tambahpost">Tambah Post</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/semuapost">Lihat
-                    Post</a>
+                @if (Auth::user()->role == 'admin')
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 {{ Request::segment(2) == 'home' ? 'active' : '' }}"
+                        href="/dashboard/home">Dashboard</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 {{ Request::segment(2) == 'daftarkategori' ? 'active' : '' }}"
+                        href="/dashboard/daftarkategori">Daftar Kategori</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 {{ Request::segment(3) == 'create' ? 'active' : '' }}"
+                        href="/dashboard/kategori/create">Tambah Kategori</a>
+                @elseif(Auth::user()->role == 'user')
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 {{ Request::segment(2) == 'home' ? 'active' : '' }}"
+                        href="/dashboard/home">Dashboard</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 {{ Request::segment(2) == 'postsaya' ? 'active' : '' }}"
+                        href="/dashboard/postsaya">Post Saya</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 {{ Request::segment(2) == 'tambahpost' ? 'active' : '' }}"
+                        href="/dashboard/tambahpost">Tambah Post</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/semuapost">Lihat
+                        Post</a>
+                @endif
             </div>
         </div>
         <!-- Page content wrapper-->
