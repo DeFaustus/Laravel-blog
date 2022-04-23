@@ -107,14 +107,13 @@ class DashboardController extends Controller
                 'gambar'    => $fileName
             ]);
         }
-        $postHasil = Post::where('id', $request->id)->update([
+        Post::where('id', $request->id)->update([
             'judul'     => $request->judul,
             'isi'       => $request->isi,
             'slug'      => $slug,
             'excerpt'   => $excerpt,
             'isi'       => $request->isi,
         ]);
-
         return redirect('/dashboard/postsaya')->with('status', "Berhasil Update Blog");
     }
 
