@@ -30,7 +30,7 @@ class DashboardController extends Controller
             'judul'         => 'required',
             'kategori'      => 'required',
             'isi'           => 'required',
-            'gambar'        => 'mimes:jpg,png,jpeg'
+            'gambar'        => 'required|mimes:jpg,png,jpeg'
         ]);
 
         $validate['user_id'] = Auth::user()->id;

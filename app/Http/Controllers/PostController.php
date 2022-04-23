@@ -19,14 +19,17 @@ class PostController extends Controller
     public function semuaPost(Request $request)
     {
         $kategori = [];
-        foreach ($request->kategori as $key => $value) {
-            array_push($kategori, $value);
+        if ($request->kategori != '') {
+            foreach ($request->kategori as $key) {
+                array_push($kategori, $key);
+            }
         }
         $request->input('kategori');
         return view('home.semuapost', [
             'title'     => "Semua Post",
             'data'      => Post::latest()->Filter(request(['search', 'author']), $kategori)->paginate(5)->withQueryString(),
-            'kategori'  => Kategori::all()
+            'kategori'  => Kategori::all(),
+            'kategoris' => $kategori
         ]);
     }
 }

@@ -21,7 +21,9 @@
                                 <select class="form-control tambahpost @error('kategori') is-invalid @enderror"
                                     name="kategori[]" multiple="multiple">
                                     @foreach ($kategori as $item)
-                                        <option value="{{ $item->id }}" @selected(old('kategori') == $item->id)>{{ $item->nama }}
+                                        <option value="{{ $item->id }}"
+                                            {{ in_array($item->id, old('kategori') ?: []) ? 'selected' : '' }}>
+                                            {{ $item->nama }}
                                         </option>
                                     @endforeach
                                 </select>

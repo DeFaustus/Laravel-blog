@@ -18,7 +18,8 @@
                                 <p>Cari berdasarkan kategori : </p>
                                 <select class="form-control kategori" name="kategori[]" multiple="multiple">
                                     @foreach ($kategori as $key)
-                                        <option value="{{ $key->slug }}" @selected(old('kategori') == $key->slug)>{{ $key->nama }}
+                                        <option value="{{ $key->slug }}"
+                                            {{ in_array($key->slug, $kategoris) ? 'selected' : '' }}>{{ $key->nama }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -69,7 +70,6 @@
                         {{ $data->links() }}
                     </div>
                     <!-- ##### Sidebar Area ##### -->
-
                 </div>
             </div>
         </div>

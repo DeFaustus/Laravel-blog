@@ -33,7 +33,7 @@
                             <div class="single-blog-content">
                                 <div class="line"></div>
                                 <a href="#" class="post-tag">Karepmu</a>
-                                <h4><a href="#" class="post-headline">Selamat Datang Di Blog Ngawur</a></h4>
+                                <h4><a href="#" class="post-headline">Selamat Datang Di Go Blog</a></h4>
                                 <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam
                                     vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel
                                     volutpat quam tincidunt. Morbi sodales, dolor id ultricies dictum</p>
@@ -122,16 +122,10 @@
                             <!-- Widget Area -->
                             <div class="sidebar-widget-area">
                                 <form action="/semuapost" method="GET" class="search-form">
-                                    <input type="search" name="search" id="searchForm" placeholder="Search">
+                                    <input type="search" name="search" class="form-control" placeholder="Search">
                                     <input type="submit" value="submit">
                                 </form>
                             </div>
-                            <!-- Widget Area -->
-                            <div class="sidebar-widget-area">
-                                <h5 class="title">Advertisement</h5>
-                                <a href="#"><img src="img/bg-img/add.gif" alt=""></a>
-                            </div>
-
                             <!-- Widget Area -->
                             <div class="sidebar-widget-area">
 

@@ -40,7 +40,7 @@
           <div class="container h-100">
               <div class="row h-100 align-items-center">
                   <div class="col-12">
-                      <a href="index.html" class="original-logo"><img src="{{ url('img/core-img/logo.png') }}"
+                      <a href="index.html" class="original-logo"><img src="{{ url('img/core-img/opo.png') }}"
                               alt=""></a>
                   </div>
               </div>
@@ -77,6 +77,7 @@
                           <div class="classynav">
                               <ul>
                                   <li><a href="/">Home</a></li>
+                                  <li><a href="/semuapost">Semua Post</a></li>
                                   @if (Request::segment(1) == '')
                                       <li><a href="#">Kategori</a>
                                           <ul class="dropdown">
