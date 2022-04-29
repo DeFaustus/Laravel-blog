@@ -12,6 +12,16 @@
                 {{ session('error') }}
             </div>
         @endif
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <p><strong>Opps Something went wrong</strong></p>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         {{-- <section class="vh-100"> --}}
         <div class="container-fluid h-custom">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -24,15 +34,23 @@
                         @csrf
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form3Example3">Email address :</label>
-                            <input type="email" name="email" id="form3Example3" class="form-control form-control-lg"
+                            <input type="email" name="email" id="form3Example3"
+                                class="form-control form-control-lg @error('email') is-invalid @enderror"
                                 placeholder="Enter a valid email address" />
+                            @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <!-- Password input -->
                         <div class="form-outline mb-3">
                             <label class="form-label" for="form3Example4">Password : </label>
-                            <input type="password" id="form3Example4" name="password" class="form-control form-control-lg"
+                            <input type="password" id="form3Example4" name="password"
+                                class="form-control form-control-lg @error('password') is-invalid @enderror"
                                 placeholder="Enter password" />
+                            @error('password')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="d-flex justify-content-between align-items-center">

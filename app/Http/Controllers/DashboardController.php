@@ -86,13 +86,15 @@ class DashboardController extends Controller
         $slug = Str::slug($request->input('judul'), '-');
         $validate['slug'] = $slug;
         $excerpt = Str::limit(strip_tags($request->input('isi')), 100);
+        if ($request->hasFile('gambar')) {
+            $validate['gambar'] = "mimes:jpg,png,jpeg";
+        }
         $kat = [];
         foreach ($request->input('kategori') as $item) {
             array_push($kat, $item);
         }
         $post->kategoris()->sync($kat);
         if ($request->file('gambar')) {
-            $validate['gambar'] = "mimes:jpg,png,jpeg";
             if (Storage::exists('public/gambar/' . $post->gambar)) {
                 Storage::delete('public/gambar/' . $post->gambar);
             }
